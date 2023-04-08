@@ -1,7 +1,7 @@
 <x-mail::message>
 # {{ $tarefa }}
 
-Data limete para conclusão: {{ $data_conclusao }}
+Data limite para conclusão: {{ $data_conclusao }}
 
 <x-mail::button :url="$url">
 Visualizar tarefa

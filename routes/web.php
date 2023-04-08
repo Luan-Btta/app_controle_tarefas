@@ -22,7 +22,7 @@ Auth::routes(['verify' => true]);
 
 Route::resource('tarefa', 'App\Http\Controllers\TarefaController')->middleware(['verified']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['verified']);
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['verified']);
 
 Route::get('/mensagem-teste', function(){
     return new MensagemTesteMail();
