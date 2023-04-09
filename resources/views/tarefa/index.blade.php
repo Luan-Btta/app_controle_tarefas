@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Tarefas</div>
+                    <div class="card-header">Tarefas <a href="{{route('tarefa.create')}}" class="float-end">Novo</a></div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -29,7 +29,11 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('tarefa.destroy', $tarefa->id) }}">
+                                            <form action="{{ route('tarefa.destroy', ['tarefa' => $tarefa->id]) }}" id="form_x{{ $tarefa->id }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            <a href="#" onclick="document.getElementById('form_x{{ $tarefa->id }}').submit()">
                                                 <i class="fa-solid fa-calendar-xmark"></i>
                                             </a>
                                         </td>
