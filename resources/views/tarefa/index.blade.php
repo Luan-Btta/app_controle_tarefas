@@ -5,7 +5,20 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Tarefas <a href="{{route('tarefa.create')}}" class="float-end">Novo</a></div>
+                    <div class="card-header">Tarefas
+                        <div class="row">
+                            <div class="col">
+                                <div class="float-end">
+                                    <a  class="me-2" href="{{ route('tarefa.create') }}">Novo</a>
+                                    <a class="me-2" href="{{ route('tarefa.exportacao', ['extensao' => 'xlsx']) }}">XLS</a>
+                                    <a  class="me-2" href="{{ route('tarefa.exportacao', ['extensao' => 'csv']) }}">CSV</a>
+                                    <a href="{{ route('tarefa.exportacao', ['extensao' => 'pdf']) }}">PDF</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -29,11 +42,13 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('tarefa.destroy', ['tarefa' => $tarefa->id]) }}" id="form_x{{ $tarefa->id }}" method="POST">
+                                            <form action="{{ route('tarefa.destroy', ['tarefa' => $tarefa->id]) }}"
+                                                id="form_x{{ $tarefa->id }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
-                                            <a href="#" onclick="document.getElementById('form_x{{ $tarefa->id }}').submit()">
+                                            <a href="#"
+                                                onclick="document.getElementById('form_x{{ $tarefa->id }}').submit()">
                                                 <i class="fa-solid fa-calendar-xmark"></i>
                                             </a>
                                         </td>

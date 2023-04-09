@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TarefasExport;
 use App\Mail\NovaTarefaMail;
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
 use Auth;
 use Mail;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TarefaController extends Controller
 {
@@ -111,5 +113,14 @@ class TarefaController extends Controller
 
         $tarefa->delete();
         return redirect()->route('tarefa.index');
+    }
+
+    public function exportacao($extensao)
+    {
+        $extensoes = ['csv', 'xlsx', 'pdf'];
+        if(in_array($extensao, $extensoes)){
+            return Excel::download(new TarefasExport, "MinhasTarefas.$extensao");
+        }
+            return redirect()->route('tarefa.index');
     }
 }
