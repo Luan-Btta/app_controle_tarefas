@@ -4,10 +4,11 @@ namespace App\Exports;
 
 use App\Models\Tarefa;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Auth;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
+use Auth;
 
-class TarefasExport implements FromCollection, WithHeadings
+class TarefasExport implements FromCollection, WithHeadings, WithMapping
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -22,11 +23,17 @@ class TarefasExport implements FromCollection, WithHeadings
     {
         return [
             'ID Tarefa',
-            'ID Usuário',
             'Tarefa',
             'Data Limte Conclusão',
-            'Data Inclusão',
-            'Data Atualização',
+        ];
+    }
+
+    public function map($registro) :array
+    {
+        return [
+            $registro->id,
+            $registro->tarefa,
+            date( 'd-m-Y', strtotime($registro->data_conclusao)),
         ];
     }
 }
