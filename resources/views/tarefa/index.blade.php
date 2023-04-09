@@ -12,7 +12,8 @@
                                     <a  class="me-2" href="{{ route('tarefa.create') }}">Novo</a>
                                     <a class="me-2" href="{{ route('tarefa.exportacao', ['extensao' => 'xlsx']) }}">XLS</a>
                                     <a  class="me-2" href="{{ route('tarefa.exportacao', ['extensao' => 'csv']) }}">CSV</a>
-                                    <a href="{{ route('tarefa.exportacao', ['extensao' => 'pdf']) }}">PDF</a>
+                                    <a class="me-2" href="{{ route('tarefa.exportacao', ['extensao' => 'pdf']) }}">PDF</a>
+                                    <a href="{{ route('tarefa.exportar') }}" target="_blank">DOMPDF</a>
                                 </div>
                             </div>
                         </div>
